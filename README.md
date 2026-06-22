@@ -7,23 +7,24 @@ The system detects faces, recognises known people (via LBPH), predicts emotions,
 
 ## 📦 Large Files – Must Download Separately
 
-The pre‑trained weight files for ResNet50 and EfficientNet are **too large for GitHub** (each >200 MB).  
+The following files are **too large for GitHub** (>100 MB) or are binary wheels.  
 They are **excluded** from this repository via `.gitignore`.  
-**You must download them manually** from the links below and place them in the `models/` folder.
+**You must download them manually** from the links below and place them in the correct folders.
 
-| Model | File name | Download link |
-|-------|-----------|---------------|
-| ResNet50 | `resnet.weights.h5` | [Download from Google Drive](https://drive.google.com/your-resnet-link) |
-| EfficientNet | `efficientnet.weights.h5` | [Download from Google Drive](https://drive.google.com/your-efficientnet-link) |
+| File | Purpose | Download Link | Where to Place |
+|------|---------|---------------|----------------|
+| `resnet.weights.h5` | ResNet50 model weights | [Download](https://drive.google.com/your-resnet-link) | `models/resnet.weights.h5` |
+| `efficientnet.weights.h5` | EfficientNet model weights | [Download](https://drive.google.com/your-efficientnet-link) | `models/efficientnet.weights.h5` |
+| `vit_test_preds.npy` | (Optional) NumPy predictions – not needed to run the app | [Download](https://drive.google.com/your-vit-preds-link) | `vit_test_preds.npy` (root) |
+| `dlib-19.22.99-cp310-cp310-win_amd64.whl` | Dlib wheel for Windows (Python 3.10) | [Download](https://drive.google.com/your-dlib-whl-link) | (Place in root for local installation) |
 
-> 🔁 **Replace** the placeholder links with your actual Google Drive shareable links (set to **“Anyone with the link”**).
+> 🔁 **Replace** all placeholder links with your actual Google Drive shareable links (set to **“Anyone with the link”**).
 
 ---
 
 ## 🔒 `.gitignore` – What’s Already Ignored
 
-This project already ignores large files so they are **not** accidentally pushed to GitHub.  
-If you are setting up the repository from scratch, create a `.gitignore` file with:
+To prevent large files from being accidentally pushed, the repository already includes a `.gitignore` with:
 
 ```gitignore
 # Virtual environments
@@ -83,17 +84,19 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-If you encounter issues with `dlib`, install it manually:
+If you encounter issues with `dlib` (especially on Windows), you can install it using the provided `.whl` file:
 ```bash
-pip install dlib
+pip install dlib-19.22.99-cp310-cp310-win_amd64.whl
 ```
-(or use the provided `.whl` file if present in the repository).
+> **Note:** This wheel is for Python 3.10 64‑bit. If you use a different Python version, download the appropriate wheel from [this link](https://github.com/z-mahmud22/Dlib_Windows_Python3.x/).
 
-### 4. Download the large weight files
+### 4. Download and place the large weight files
 - Click the links in the table above.
-- Download both `.h5` files.
+- Download the two `.h5` files (`resnet.weights.h5` and `efficientnet.weights.h5`).
 - Create a folder named `models` in the project root.
 - Place both `.h5` files inside `models/`.
+
+- (Optional) If you want the `.npy` predictions file, place `vit_test_preds.npy` in the project root.
 
 ### 5. (Optional) Set up face recognition (LBPH)
 - The system includes a pre‑trained LBPH model (`lbph_model.yml` and `lbph_labels.json`) – you can use it as is.
