@@ -83,6 +83,21 @@ generalization from MixUp and AdamW regularization.
 | Platform | Kaggle T4 GPU |
 
 ---
+
+## Project Structure
+
+```
+AI Final Project/
+├── run.py                    # Main webcam application
+├── requirements.txt          # Python dependencies
+├── lbph_model.yml            # LBPH face recognition model
+├── lbph_labels.json          # Label mapping for recognized faces
+├── known_faces/              # Enrolled student face images
+│   └── [PersonName]/         # One subfolder per person
+├── best_efficientnetb4.keras # Download from Google Drive
+└── best_resnet50v2.keras     # Download from Google Drive
+```
+
 ## Team
 - Filippo Jason Budiyanto (s1123541)
 - Wei-li Lin (s1123533)
