@@ -13,7 +13,7 @@ The main script is `run.py`, which loads:
 
 ## Requirements
 
-- Python 3.10 or 3.11
+- Python 3.10 or 3.11 (If you don't have Python 3.10.11, install it from https://python.org/)
 - `opencv-contrib-python`
 - `tensorflow`
 - `numpy`
