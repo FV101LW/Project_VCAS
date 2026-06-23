@@ -50,7 +50,7 @@ Dataset: RAF-DB (15,000 real-world images, 7 emotion categories)
 
 ### EfficientNetB4 + MixUp + AdamW on RAF-DB
 
-![EfficientNetB4 Training Curve](mixup result.png)
+![EfficientNetB4 Training Curve](mixup_result.png)
 
 Val accuracy reaches **84.98%** with a train-val gap of only ~2%,
 showing MixUp augmentation successfully reduced overfitting compared
