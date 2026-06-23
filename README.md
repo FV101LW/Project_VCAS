@@ -32,6 +32,57 @@ Place these in the AI Final Project folder after downloading:
 
 Dataset: RAF-DB (15,000 real-world images, 7 emotion categories)
 
+### Per-Class Accuracy (3-Model Ensemble)
+
+| Emotion | Accuracy |
+|---|---|
+| Happy | 94% |
+| Surprise | 88% |
+| Neutral | 89% |
+| Sad | 86% |
+| Angry | 79% |
+| Disgust | 57% |
+| Fear | 46% |
+
+---
+
+## Training Curves
+
+### EfficientNetB4 + MixUp + AdamW on RAF-DB
+
+![EfficientNetB4 Training Curve](mixup_result.png)
+
+Val accuracy reaches **84.98%** with a train-val gap of only ~2%,
+showing MixUp augmentation successfully reduced overfitting compared
+to the FER2013 baseline which had a ~10% gap.
+
+### ResNet50V2 + MixUp + AdamW on RAF-DB
+
+![ResNet50V2 Training Curve](training_curve_resnet.png)
+
+Val accuracy reaches **81.63%**, improving steadily across 60 epochs.
+Both models show healthy convergence with validation accuracy
+consistently close to training accuracy — a sign of strong
+generalization from MixUp and AdamW regularization.
+
+---
+
+## Training Configuration
+
+| Setting | Value |
+|---|---|
+| Dataset | RAF-DB (15,000 images, 7 classes) |
+| Augmentation | MixUp (α=0.2) + flip/rotation/zoom/brightness |
+| Optimizer | AdamW (lr=1e-4, weight_decay=1e-4) |
+| Loss | Categorical cross-entropy + label smoothing (ε=0.5) |
+| LR Schedule | ReduceLROnPlateau (factor=0.3, patience=5) |
+| Early Stopping | Patience=15 epochs |
+| Class Weights | Inverse-frequency (handles class imbalance) |
+| Batch Size | 32 |
+| Max Epochs | 60 |
+| Platform | Kaggle T4 GPU |
+
+---
 ## Team
 - Filippo Jason Budiyanto (s1123541)
 - Wei-li Lin (s1123533)
