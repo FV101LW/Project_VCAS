@@ -46,6 +46,20 @@ Dataset: RAF-DB (15,000 real-world images, 7 emotion categories)
 
 ---
 
+## Project Structure
+
+```
+AI Final Project/
+├── run.py                    # Main webcam application
+├── requirements.txt          # Python dependencies
+├── lbph_model.yml            # LBPH face recognition model
+├── lbph_labels.json          # Label mapping for recognized faces
+├── known_faces/              # Enrolled student face images
+│   └── [PersonName]/         # One subfolder per person
+├── best_efficientnetb4.keras # Download from Google Drive
+└── best_resnet50v2.keras     # Download from Google Drive
+```
+
 ## Training Curves
 
 ### EfficientNetB4 + MixUp + AdamW on RAF-DB
@@ -84,19 +98,6 @@ generalization from MixUp and AdamW regularization.
 
 ---
 
-## Project Structure
-
-```
-AI Final Project/
-├── run.py                    # Main webcam application
-├── requirements.txt          # Python dependencies
-├── lbph_model.yml            # LBPH face recognition model
-├── lbph_labels.json          # Label mapping for recognized faces
-├── known_faces/              # Enrolled student face images
-│   └── [PersonName]/         # One subfolder per person
-├── best_efficientnetb4.keras # Download from Google Drive
-└── best_resnet50v2.keras     # Download from Google Drive
-```
 ## Results
 
 ### Final Ensemble Confusion Matrix (87.26% Test Accuracy)
